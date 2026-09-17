@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  jev-trading-bot:
+    build: .
+    container_name: jev-quant-agent
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+      - TYPESAFE_API_KEY=${TYPESAFE_API_KEY}
+    volumes:
+      - jev_data:/app/data
+
+volumes:
+  jev_data:
